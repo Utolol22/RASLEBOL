@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply leading-relaxed text-slate-800;
+    font-family: var(--font-barlow), sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading uppercase leading-tight;
+  }
+  h1 {
+    @apply text-4xl md:text-5xl font-normal;
+  }
+  h2 {
+    @apply text-3xl md:text-4xl font-normal;
+  }
+  h3 {
+    @apply text-xl md:text-2xl font-bold;
+  }
+  
+  .font-heading {
+    font-family: var(--font-anton), sans-serif;
+  }
+  
+  .font-sans {
+    font-family: var(--font-barlow);
+  }
+}
+
+@layer utilities {
+  .text-rouge-liberation {
+    color: #B91C1C;
+  }
+  .text-rouge-sombre {
+    color: #7F1D1D;
+  }
+  .text-noir-profond {
+    color: #111827;
+  }
+  .text-blanc-purete {
+    color: #FFFFFF;
+  }
+  .text-gris-sagesse {
+    color: #6B7280;
+  }
+  .bg-sable-introspection {
+    background-color: #F9FAFB;
+  }
+  .bg-rouge-liberation {
+    background-color: #B91C1C;
+  }
+  .bg-blanc-purete {
+    background-color: #FFFFFF;
+  }
+  .bg-noir-profond {
+    background-color: #111827;
+  }
+  .border-gris-sagesse {
+    border-color: #6B7280;
+  }
+  .border-blanc-purete {
+    border-color: #FFFFFF;
+  }
+  .from-rouge-liberation {
+    --tw-gradient-from: #B91C1C;
+  }
+  .from-rouge-sombre {
+    --tw-gradient-from: #7F1D1D;
+  }
+  .to-rouge-liberation {
+    --tw-gradient-to: #B91C1C;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-[90%] max-w-6xl mx-auto px-4;
+  }
+  
+  .section-title {
+    @apply mb-8 text-center font-heading;
+  }
+
+  /* Nouvelles classes pour les espacements adaptatifs sur mobile */
+  .mobile-padding {
+    @apply px-[5%] md:px-6;
+  }
+
+  /* Classes pour les transitions entre sections */
+  .section-transition {
+    @apply relative overflow-hidden;
+  }
+  
+  .section-transition::before {
+    @apply content-[''] absolute w-full h-16 left-0 z-10 bottom-full bg-gradient-to-b;
+  }
+  
+  /* Classes pour effet de verre (glass morphism) */
+  .glass-effect {
+    @apply bg-blanc-purete/70 backdrop-blur-sm border border-blanc-purete/20 shadow-lg;
+  }
+  
+  /* Navigation mobile simplifiée */
+  .mobile-nav-overlay {
+    @apply transition-opacity duration-300 ease-in-out border-t border-gris-sagesse/10;
+    height: 58px; /* Hauteur réduite pour gagner de l'espace */
+  }
+
+  /* Styles d'éléments de navigation simplifiés */
+  .nav-item {
+    @apply relative flex flex-col items-center justify-center;
+    max-width: 65px; /* Limiter la largeur pour éviter les débordements */
+  }
+
+  /* Styles de la barre de progression */
+  .progress-marker {
+    @apply cursor-pointer text-center relative;
+    min-width: 20px;
+  }
+
+  .progress-marker.active {
+    @apply text-rouge-liberation font-medium;
+  }
+
+  /* Nouveaux utilitaires pour les effets cinématographiques simplifiés */
+  .cinema-shadow {
+    box-shadow: inset 0 0 150px rgba(0,0,0,0.7);
+  }
+  
+  .subtle-halo {
+    @apply bg-rouge-liberation/15 blur-md;
+  }
+
+  /* Z-index hiérarchie pour éviter les conflits de superposition */
+  #progressContainer {
+    z-index: 95;
+  }
+}
+
+/* Animations globales */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Animation de pulse subtile pour les CTA */
+@keyframes pulse-subtle {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* Animations cinématographiques simplifiées */
+@keyframes pulse-slow {
+  0% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.03); }
+  100% { opacity: 0.5; transform: scale(1); }
+}
+
+@keyframes pulse-cta {
+  0% { transform: scale(1); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2); }
+  50% { transform: scale(1.015); box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.25); }
+  100% { transform: scale(1); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2); }
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Nouvelles animations cinématographiques pour transitions entre sections */
+@keyframes revealUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeScale {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes parallaxScroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+@keyframes vignetteIntensify {
+  from { box-shadow: inset 0 0 100px rgba(0,0,0,0.5); }
+  to { box-shadow: inset 0 0 150px rgba(0,0,0,0.7); }
+}
